@@ -108,6 +108,33 @@ export const PROVIDERS: ProviderInfo[] = [
     browserRegion: "us-east-1",
     marketed: false,
   },
+  // Adapters only so far: no published results yet, so not in marketing copy.
+  {
+    id: "BROWSERLESS",
+    displayName: "Browserless",
+    url: "https://www.browserless.io",
+    logo: "/logos/browserless.png",
+    browserRegion: "us-west",
+    marketed: false,
+  },
+  {
+    id: "CLOUDFLARE",
+    displayName: "Cloudflare",
+    marketingName: "Cloudflare Browser Run",
+    url: "https://developers.cloudflare.com/browser-run/",
+    logo: "/logos/cloudflare.png",
+    browserRegion: "global",
+    marketed: false,
+  },
+  {
+    id: "AWS_AGENTCORE",
+    displayName: "AWS AgentCore",
+    marketingName: "Amazon Bedrock AgentCore Browser",
+    url: "https://aws.amazon.com/bedrock/agentcore/",
+    logo: "/logos/aws-agentcore.png",
+    browserRegion: "us-east-1",
+    marketed: false,
+  },
 ];
 
 export const PROVIDERS_BY_ID: Record<string, ProviderInfo> = Object.fromEntries(
