@@ -42,7 +42,7 @@ Create session → Connect via CDP → Navigate page → Release session
 
 Missing a provider? [Open a PR](https://github.com/nottelabs/browserarena/pulls).
 
-## Benchmark
+## Session Performance benchmark
 
 The core benchmark measures the minimal end-to-end lifecycle for a remote Chrome session:
 
@@ -57,6 +57,22 @@ Two modes:
 - Concurrent: 100 measured sessions per provider, in batches of 10 parallel sessions
 
 ## Methodology
+
+### Proxy Performance benchmark
+
+The separate **Proxy Performance** page compares complete 1 MiB downloads through native
+residential proxies in the US, France, Brazil, India, and Japan. It defaults to
+50 fresh sessions per provider/country, with country verification, browser-side
+timing, response validation, and estimated browser-plus-proxy costs.
+
+```bash
+npm run bench -- --benchmark=proxy-get --provider=steel,kernel,notte --runs=50
+```
+
+Deploy the included controlled target before a live run. See
+[setup, pricing, and measurement details](docs/proxy-get.md). The benchmark's
+latency excludes create/connect/release; estimated cost includes billable setup
+and failed attempts. Unknown prices remain unknown.
 
 ### Fairness
 
@@ -134,6 +150,13 @@ Daily results are produced by `scripts/run-and-publish.sh`, which runs the bench
 ```
 
 Per-EC2 setup: clone the repo, populate `.env` with that region's provider keys, and add an SSH key as a [deploy key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys) with write access (one key per box). Cron logs go to `logs/` (gitignored).
+
+Proxy Performance has a separate publisher, `scripts/run-proxy-and-publish.sh`, for a
+dedicated checkout on the east runner. Five daily batches accumulate to **50
+attempts per provider/country** under one daily suite ID; the frontend reads all
+batches together. Run `--check` before enabling it. See the
+[proxy scheduling and deployment instructions](docs/proxy-get.md#results-and-website)
+for the UTC cron lines, prerequisites, and estimated $20.50/day usage budget.
 
 ### Regression alerts
 
