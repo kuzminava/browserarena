@@ -251,11 +251,23 @@ function buildVerdict(
     breached: isBreachingDay(metricValue(p, spec.key), baselineValue, spec, config),
   }));
 
-  // Walk backwards from `index` while days keep breaching, to find when this
-  // episode started. Reported as the onset date in the alert.
+  // Walk backwards while days keep breaching, to find when this episode
+  // started. Reported as the onset date in the alert.
+  //
+  // Start from the latest breaching day in the recent window, not from
+  // `index`: K-of-N means a metric can be breached while today itself is
+  // clean (two bad days then a dip under the threshold). Walking from `index`
+  // would then stop immediately and report a breach with no onset.
+  // A metric with no breaching day in the window has no episode at all, so
+  // the walk must not continue into older history and surface a stale onset.
   let breachAgeDays = 0;
   let onsetDate: string | null = null;
-  for (let i = index; i >= 0; i--) {
+  const recentStart = index - recent.length + 1;
+  let start = index;
+  while (start >= recentStart && !recentDetail[start - recentStart].breached) {
+    start--;
+  }
+  for (let i = start >= recentStart ? start : -1; i >= 0; i--) {
     if (!isBreachingDay(metricValue(points[i], spec.key), baselineValue, spec, config)) {
       break;
     }
