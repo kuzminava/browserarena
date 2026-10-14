@@ -36,6 +36,7 @@ export function ProviderFailuresPopover({
     <Popover>
       <PopoverTrigger
         type="button"
+        onClick={(event) => event.stopPropagation()}
         className={cn(
           "inline-flex items-center gap-1 rounded-[3px] border-[1.5px] border-foreground/30 bg-background px-1.5 py-0.5 font-mono text-[0.6rem] text-foreground tabular-nums",
           "outline-none transition-colors hover:border-foreground/60 focus-visible:ring-2 focus-visible:ring-foreground/30",
@@ -51,6 +52,7 @@ export function ProviderFailuresPopover({
         align="start"
         side="bottom"
         sideOffset={6}
+        onClick={(event) => event.stopPropagation()}
       >
         <div className="border-b border-foreground/20 px-3 py-2">
           <p className="text-[0.6rem] font-semibold uppercase tracking-widest text-muted-foreground">
@@ -113,9 +115,10 @@ export function ProviderFailuresPopover({
                   {longBody ? (
                     <button
                       type="button"
-                      onClick={() =>
-                        setOpenPattern(expanded ? null : i)
-                      }
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setOpenPattern(expanded ? null : i);
+                      }}
                       className="mt-1 text-[0.6rem] font-medium text-foreground underline hover:no-underline"
                     >
                       {expanded ? "Show less" : "Show full"}
