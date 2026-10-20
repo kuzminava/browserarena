@@ -46,6 +46,10 @@ const PRICING: Record<string, { unit: UnitPricing }> = {
   AWS_AGENTCORE: {
     unit: { ratePerHour: 0.1273, billing: "per_second", minimumSeconds: 1, perSessionCreationFee: 0 },
   },
+  // Professional plan: $4.50/month for 50 browser hours; billing granularity is not published.
+  GOLOGIN: {
+    unit: { ratePerHour: 0.09, billing: "per_second", minimumSeconds: 0, perSessionCreationFee: 0 },
+  },
 };
 
 function computeUnitCost(pricing: UnitPricing, durationSeconds: number): number {

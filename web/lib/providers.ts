@@ -137,6 +137,14 @@ export const PROVIDERS: ProviderInfo[] = [
     browserRegion: "us-east-1",
     marketed: false,
   },
+  {
+    id: "GOLOGIN",
+    displayName: "GoLogin",
+    marketingName: "GoLogin Cloud Browser",
+    url: "https://gologin.com/cloud-browser/",
+    browserRegion: "provider-default",
+    marketed: false,
+  },
 ];
 
 export const PROVIDERS_BY_ID: Record<string, ProviderInfo> = Object.fromEntries(
