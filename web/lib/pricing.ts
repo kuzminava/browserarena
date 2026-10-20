@@ -46,9 +46,9 @@ const PRICING: Record<string, { unit: UnitPricing }> = {
   AWS_AGENTCORE: {
     unit: { ratePerHour: 0.1273, billing: "per_second", minimumSeconds: 1, perSessionCreationFee: 0 },
   },
-  // Professional plan: $4.50/month for 50 browser hours; billing granularity is not published.
+  // Custom plan rate ($0.04-0.09/hr depending on plan); billing granularity is not published.
   GOLOGIN: {
-    unit: { ratePerHour: 0.09, billing: "per_second", minimumSeconds: 0, perSessionCreationFee: 0 },
+    unit: { ratePerHour: 0.04, billing: "per_second", minimumSeconds: 0, perSessionCreationFee: 0 },
   },
 };
 

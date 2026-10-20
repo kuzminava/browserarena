@@ -36,7 +36,7 @@ test("GoLogin creates a fresh profile, builds the CDP URL, then stops and delete
       ["DELETE /browser/profile123/web", "DELETE /browser/profile123"]);
 
     await assert.rejects(provider.create({ proxyCountry: "US" }), /not yet wired/);
-    assert.equal(provider.computeCost(3600), 0.09);
+    assert.equal(provider.computeCost(3600), 0.04);
   } finally {
     process.env.GOLOGIN_API_TOKEN = previous.token;
     process.env.GOLOGIN_API_URL = previous.api;
