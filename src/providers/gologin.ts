@@ -14,7 +14,7 @@ export class GologinProvider implements ProviderClient {
   private api = (process.env.GOLOGIN_API_URL || "https://api.gologin.com").replace(/\/+$/, "");
   private cdpBase = process.env.GOLOGIN_CDP_URL || "wss://cloudbrowser.gologin.com/connect";
 
-  // Custom plan rate, $0.04/hr (gologin.com/cloud-browser lists $0.04-0.09/hr depending on plan).
+  // Custom plan rate, $0.04/hr (gologin.com/cloud-browser).
   computeCost(seconds: number): number {
     const perHour = 0.04;
     return Math.round((seconds / 3600) * perHour * 1e8) / 1e8;

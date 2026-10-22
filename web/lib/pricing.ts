@@ -46,7 +46,7 @@ const PRICING: Record<string, { unit: UnitPricing }> = {
   AWS_AGENTCORE: {
     unit: { ratePerHour: 0.1273, billing: "per_second", minimumSeconds: 1, perSessionCreationFee: 0 },
   },
-  // Custom plan rate ($0.04-0.09/hr depending on plan); billing granularity is not published.
+  // Custom plan rate, $0.04/hr (gologin.com/cloud-browser); billing granularity is not published.
   GOLOGIN: {
     unit: { ratePerHour: 0.04, billing: "per_second", minimumSeconds: 0, perSessionCreationFee: 0 },
   },

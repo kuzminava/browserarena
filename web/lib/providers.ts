@@ -142,6 +142,7 @@ export const PROVIDERS: ProviderInfo[] = [
     displayName: "GoLogin",
     marketingName: "GoLogin Cloud Browser",
     url: "https://gologin.com/cloud-browser/",
+    logo: PROVIDER_LOGO_SRC.GOLOGIN,
     browserRegion: "provider-default",
     marketed: false,
   },
